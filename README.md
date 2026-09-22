@@ -32,16 +32,19 @@ Localmente, esse `LoadBalancer` nunca sai do estado `<pending>`, porque não
 existe um balanceador de carga de verdade rodando na minha máquina — o que
 me levou ao próximo passo.
 
-### [`terraform-gke-lab/`](./terraform-gke-lab)
+### [`terraform-gke-lab/`](./terraform-gke-lab) ✅
 
 O "final feliz" da história acima: os mesmos manifestos de
 `k8s-gcp-lab`, agora aplicados num cluster **GKE (Google Kubernetes
-Engine)** real, provisionado via Terraform (VPC dedicada, subnet, service
-account, cluster zonal e node pool). Dessa vez o `LoadBalancer` sai do
-`<pending>` e ganha um `EXTERNAL-IP` público de verdade. Esse projeto tem
-seu próprio README com o passo a passo completo, incluindo como rodei tudo
-isso via Google Cloud Skills Boost (sem precisar de cartão de crédito
-pessoal) — detalhes em [`terraform-gke-lab/README.md`](./terraform-gke-lab/README.md).
+Engine)** real, provisionado via Terraform (rede e service account padrão
+do projeto — a conta temporária do lab não tem permissão de IAM pra criar
+VPC/subnet/service account dedicadas —, cluster zonal e node pool). Dessa
+vez o `LoadBalancer` realmente saiu do `<pending>` e ganhou um
+`EXTERNAL-IP` público de verdade, com o nginx respondendo no navegador.
+Esse projeto tem seu próprio README com o passo a passo completo — os
+obstáculos reais, os prints e como rodei tudo isso via Google Cloud Skills
+Boost (sem precisar de cartão de crédito pessoal) — detalhes em
+[`terraform-gke-lab/README.md`](./terraform-gke-lab/README.md).
 
 ## Stack
 
