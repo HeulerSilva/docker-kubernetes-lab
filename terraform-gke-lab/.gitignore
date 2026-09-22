@@ -1,0 +1,14 @@
+# Terraform gera esses arquivos/pastas localmente ao rodar init/apply.
+# Não devem ir pro Git: .terraform/ é só cache de plugins (pesado),
+# e os arquivos .tfstate podem conter dados sensíveis do projeto.
+.terraform/
+.terraform.tfstate.lock.info
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Arquivos de variáveis que você mesmo criar com segredos (se um dia usar)
+*.tfvars
+*.tfvars.json
+!example.tfvars

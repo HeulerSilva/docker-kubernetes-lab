@@ -1,0 +1,46 @@
+# Deployment + Service de demonstração para publicar no cluster GKE.
+# Mesma lógica do seu docker-kubernetes-lab local (kind): agora rodando
+# num cluster de verdade, então o Service type=LoadBalancer sai do
+# <pending> e ganha um EXTERNAL-IP público de verdade.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aula-nginx
+  labels:
+    app: aula-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aula-nginx
+  template:
+    metadata:
+      labels:
+        app: aula-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:stable
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aula-nginx-lb
+  labels:
+    app: aula-nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: aula-nginx
+  ports:
+    - port: 80
+      targetPort: 80
