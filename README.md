@@ -80,4 +80,4 @@ Este repositório também faz parte de um portfólio maior de Infraestrutura com
 
 ## 👤 Autor
 
-**Heuler Silva** — Pós-graduando em AI Engineering (Impacta), em transição de carreira para Engenharia de Dados & IA.
+**Heuler Silva** — Data & AI Engineer.
